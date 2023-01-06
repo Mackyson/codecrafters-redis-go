@@ -21,6 +21,6 @@ func main() {
 		os.Exit(1)
 	}
 
-	_, err = conn.Write([]byte("PONG"))
+	_, err = conn.Write([]byte("+PONG\r\n"))
 
 }
