@@ -23,7 +23,13 @@ func main() {
 			os.Exit(1)
 		}
 		go func(conn net.Conn) {
-			_, err = conn.Write([]byte("+PONG\r\n"))
+			for {
+				_, err = conn.Write([]byte("+PONG\r\n"))
+				if err != nil {
+					fmt.Println("response error: ", err.Error())
+					return
+				}
+			}
 		}(conn)
 
 	}
